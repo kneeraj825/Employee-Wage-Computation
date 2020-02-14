@@ -1,12 +1,15 @@
 #!/bin/bash -x
-#Welcome to employee wage computation
+#checking the employeeispresent or not
 isPresent=1
 employeeCheck=$(( RANDOM%2 ))
-
+empWagePerHours=20
 if (( $isPresent == $employeeCheck ))
 then
-	echo "Employee is present"
+	empHours=8
+#calculating the salary of the employee
+	salary=$(( $empWagePerHours*$empHours))
+	echo "$salary"
 else
-	echo "Employee is  absent"
+	salary=0
 fi
 
