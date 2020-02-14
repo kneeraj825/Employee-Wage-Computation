@@ -1,15 +1,19 @@
 #!/bin/bash -x
-#checking the employeeispresent or not
-isPresent=1
+#cheking the employee is for part time and calculating  the salary 
+is_Part_Time=0
+is_Full_Time=1
 employeeCheck=$(( RANDOM%2 ))
 empWagePerHours=20
-if (( $isPresent == $employeeCheck ))
+if (( $is_Full_Time == $employeeCheck ))
 then
 	empHours=8
-#calculating the salary of the employee
-	salary=$(( $empWagePerHours*$empHours))
-	echo "$salary"
+#calculating the full time salary of the employee
+	fullTimesalary=$(( $empWagePerHours*$empHours ))
+	echo "full time salary of the employee is: $fullTimesalary"
 else
-	salary=0
+	empHours=4
+#calculating the part time salary of the employee
+	partTimesalary=$(( $empWagePerHours*$empHours ))
+	echo "part  time salary of the employee is: $partTimesalary"
 fi
 
