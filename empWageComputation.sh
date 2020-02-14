@@ -8,6 +8,8 @@ empWagePerHours=20
 
 case $employeeCheck in
 $is_Full_Time)
+case $employeeCheck in
+	$is_Full_Time)
 	empHours=8
 #calculating the full time salary of the employee
 	fullTimesalary=$(( $empWagePerHours*$empHours ))
