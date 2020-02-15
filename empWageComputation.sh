@@ -1,19 +1,33 @@
 #!/bin/bash -x
-#cheking the employee is for part time and calculating  the salary 
-is_Part_Time=0
-is_Full_Time=1
-employeeCheck=$(( RANDOM%2 ))
-empWagePerHours=20
-monthlyWorkingDay=20
-#checking the employee is for full time or half time
-case $employeeCheck in
-	$is_Part_Time)
-	empHours=4
-	;;
-	$is_Full_Time)
-		empHours=8
-	;;
-esac
+
+#CONSTANTS 
+IS_PART_TIME=1
+IS_FULL_TIME=2
+MAXIMUMWORKINGHOURS=100
+EMPWAGEPERHOURS=20
+MAXIMUMWORKINGDAYS=20
+#VARIABLES
+workingDays=0
+workingHours=0
+while (( $workingDays < $MAXIMUMWORKINGDAYS && $workingHours < $MAXIMUMWORKINGHOURS ))
+do
+	((workingDays++))
+	employeeCheck=$((RANDOM%3))
+#checking the employee is for full time or part time
+	case $employeeCheck in
+		$IS_PART_TIME)
+			empHours=4
+		;;
+		$IS_FULL_TIME)
+			empHours=8
+		;;
+		*)
+			empHours=0
+		;;
+	esac
+#total working hourscalculating
+		workingHours=$(( $workingHours+$empHours ))
+done
 #calculating the total salary of the employee
-salary=$(( $empWagePerHours*$empHours*monthlyWorkingDay ))
+salary=$(( $EMPWAGEPERHOURS*$workingHours ))
 echo "salary of the month is:$salary"
