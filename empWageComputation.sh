@@ -13,7 +13,7 @@ workingHours=0
 function calcDailyWage(){
 	empHours=$1
 	dailySalary=$(( $empHours*$EMPWAGEPERHOURS ))
-		echo $dailySalary
+	echo $dailySalary
 }
 
 function empWorkHours() {
@@ -28,12 +28,12 @@ function empWorkHours() {
 			empHours=0
 		;;
 	esac
-		echo $empHours
+	echo $empHours
 }
 while (( $workingDays < $MAXIMUMWORKINGDAYS && $workingHours < $MAXIMUMWORKINGHOURS ))
 do
 	employeeCheck=$((RANDOM%3))
-   ((workingDays++))
+	((workingDays++))
 #total working hours calculating
 	empHours=$( empWorkHours $employeeCheck )
 	workingHours=$(( $workingHours+$empHours ))
