@@ -10,6 +10,12 @@ MAXIMUMWORKINGDAYS=20
 workingDays=0
 workingHours=0
 #checking the employee is for full time or part time
+function calcDailyWage(){
+	empHours=$1
+	dailySalary=$(( $empHours*$EMPWAGEPERHOURS ))
+		echo $dailySalary
+}
+
 function empWorkHours() {
 	case $1 in
 		$IS_PART_TIME)
@@ -27,11 +33,14 @@ function empWorkHours() {
 while (( $workingDays < $MAXIMUMWORKINGDAYS && $workingHours < $MAXIMUMWORKINGHOURS ))
 do
 	employeeCheck=$((RANDOM%3))
-   	((workingDays++))
+   ((workingDays++))
 #total working hours calculating
 	empHours=$( empWorkHours $employeeCheck )
 	workingHours=$(( $workingHours+$empHours ))
+	dailyWage[$workingDays]=$( calcDailyWage $empHours )
 done
 #calculating the total salary of the employee
-salary=$(( $EMPWAGEPERHOURS*$workingHours ))
-echo "salary of the month is:$salary"
+totalSalary=$(( $EMPWAGEPERHOURS*$workingHours ))
+echo "salary of the month is:$totalSalary"
+echo "daily salary is:${dailyWage[@]}"
+echo "total number of days:${#dailyWage[@]}"
