@@ -27,7 +27,7 @@ function empWorkHours() {
 while (( $workingDays < $MAXIMUMWORKINGDAYS && $workingHours < $MAXIMUMWORKINGHOURS ))
 do
 	employeeCheck=$((RANDOM%3))
-   ((workingDays++))
+   	((workingDays++))
 #total working hours calculating
 	empHours=$( empWorkHours $employeeCheck )
 	workingHours=$(( $workingHours+$empHours ))
