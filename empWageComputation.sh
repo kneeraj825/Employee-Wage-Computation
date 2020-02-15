@@ -42,5 +42,7 @@ done
 #calculating the total salary of the employee
 totalSalary=$(( $EMPWAGEPERHOURS*$workingHours ))
 echo "salary of the month is:$totalSalary"
-echo "daily salary is:${dailyWage[@]}"
-echo "total number of days:${#dailyWage[@]}"
+echo "daily salary is     :${dailyWage[@]}"
+echo "total number of days:${!dailyWage[@]}"
+echo "total count of days:${#dailyWage[@]}"
+
