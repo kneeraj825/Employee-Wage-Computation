@@ -9,13 +9,13 @@ MAXIMUMWORKINGDAYS=20
 #VARIABLES
 workingDays=0
 workingHours=0
-#checking the employee is for full time or part time
+#checking the daily wage of employee
 function calcDailyWage(){
 	empHours=$1
 	dailySalary=$(( $empHours*$EMPWAGEPERHOURS ))
 	echo $dailySalary
 }
-
+#checking the employee is for full time or part time
 function empWorkHours() {
 	case $1 in
 		$IS_PART_TIME)
