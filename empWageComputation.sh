@@ -9,12 +9,9 @@ MAXIMUMWORKINGDAYS=20
 #VARIABLES
 workingDays=0
 workingHours=0
-while (( $workingDays < $MAXIMUMWORKINGDAYS && $workingHours < $MAXIMUMWORKINGHOURS ))
-do
-	((workingDays++))
-	employeeCheck=$((RANDOM%3))
 #checking the employee is for full time or part time
-	case $employeeCheck in
+function empWorkHours() {
+	case $1 in
 		$IS_PART_TIME)
 			empHours=4
 		;;
@@ -25,8 +22,15 @@ do
 			empHours=0
 		;;
 	esac
-#total working hourscalculating
-		workingHours=$(( $workingHours+$empHours ))
+		echo $empHours
+}
+while (( $workingDays < $MAXIMUMWORKINGDAYS && $workingHours < $MAXIMUMWORKINGHOURS ))
+do
+	employeeCheck=$((RANDOM%3))
+   ((workingDays++))
+#total working hours calculating
+	empHours=$( empWorkHours $employeeCheck )
+	workingHours=$(( $workingHours+$empHours ))
 done
 #calculating the total salary of the employee
 salary=$(( $EMPWAGEPERHOURS*$workingHours ))
